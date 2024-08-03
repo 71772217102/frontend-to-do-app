@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<head>
+
+    <title>TO DO LIST</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color:rgb(211, 209, 209);
+        }
+        h1{
+           color:rgb(81, 10, 148);
+        }
+
+        div {
+            max-width: 700px;
+            background-color:white;
+            padding: 20px;
+            position: relative;
+            left: 25%;
+            text-transform: capitalize;
+        }
+
+        input {
+            font-size: 20px;
+            width: 500px;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            position: relative;
+            top: 20px;
+            box-sizing: border-box;
+            box-shadow: 5px 5px 5px rgb(220, 216, 216);
+        }
+
+        #btn {
+            width: 70px;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            position: relative;
+            top: 20px;
+            cursor: pointer;
+            box-sizing: border-box;
+            box-shadow: 5px 5px 5px rgb(220, 216, 216);
+            background-color: greenyellow;
+            font-weight: bold;
+        }
+        #btn:hover{
+            background-color: green;
+            color:white;
+        }
+
+        #ul-id {
+            padding-top: 10px;
+            list-style-type: none;
+         }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .del-btn {
+
+            font-size: 20px;
+            padding: 8px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            background-color: orangered;
+        }
+
+        .del-btn:hover{
+            background-color: brown;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>TO DO LIST</h1>
+        <input type="text" id="input-id" placeholder="Type your Task">
+        <button id="btn" onclick="insert()">Add</button>
+        <ul id="ul-id"></ul>
+    </div>
+
+
+    <script>
+
+
+        function insert() {
+
+            var inputtag = document.getElementById("input-id");
+            if (inputtag.value !== "") {
+                var createlist = document.createElement("li");
+                createlist.textContent = inputtag.value.trim();
+                var ultag = document.getElementById("ul-id");
+                ultag.appendChild(createlist);
+                createlist.className = "li";
+                inputtag.value = "";
+
+                var createbtn = document.createElement("button");
+                createbtn.textContent = "Delete";
+                createbtn.className = "del-btn";
+                createbtn.onclick = function () {
+                    createlist.remove();
+                };
+                createlist.append(createbtn);
+
+            }
+        }
+    </script>
+</body>
+
+</html>
